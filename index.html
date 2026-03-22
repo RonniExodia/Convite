@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio para Bianca Vitória 🌟</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            max-width: 450px;
+            width: 90%;
+        }
+        h1 { color: #6b46c1; font-size: 1.4em; margin-bottom: 15px; }
+        p { font-size: 1.1em; color: #4a5568; margin-bottom: 25px; line-height: 1.4; }
+        .btn {
+            background-color: #6b46c1;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 8px;
+            transition: 0.3s;
+            width: 90%;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover { background-color: #553c9a; transform: scale(1.03); }
+        .hidden { display: none; }
+        #btnNao { background-color: #a0aec0; width: auto; z-index: 1000; position: relative; }
+        .progresso { font-size: 0.85em; color: #a0aec0; margin-bottom: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <!-- FASE 1 -->
+    <div class="container" id="fase1">
+        <div class="progresso">DESAFIO 1/7</div>
+        <h1>Olá, Bianca Vitória! ✨</h1>
+        <p>Você foi convocada para um desafio relâmpago. Se chegar ao final, tem um prêmio especial te esperando. Aceita?</p>
+        <button class="btn" onclick="proxima(1)">COM CERTEZA!</button>
+    </div>
+
+    <!-- FASE 2 -->
+    <div class="container hidden" id="fase2">
+        <div class="progresso">DESAFIO 2/7</div>
+        <h1>Gosto Pessoal 🍕</h1>
+        <p>Se a gente fosse sair hoje, qual seria a vibe ideal?</p>
+        <button class="btn" onclick="proxima(2)">Um lugarzinho pra comer</button>
+        <button class="btn" onclick="proxima(2)">Um barzinho com música</button>
+        <button class="btn" onclick="proxima(2)">Um passeio ao ar livre</button>
+    </div>
+
+    <!-- FASE 3 -->
+    <div class="container hidden" id="fase3">
+        <div class="progresso">DESAFIO 3/7</div>
+        <h1>Nível de Coragem 🚀</h1>
+        <p>Você é do tipo que topa aventuras de última hora ou prefere tudo planejado?</p>
+        <button class="btn" onclick="proxima(3)">Topo tudo!</button>
+        <button class="btn" onclick="proxima(3)">Gosto de um plano bom</button>
+    </div>
+
+    <!-- FASE 4 -->
+    <div class="container hidden" id="fase4">
+        <div class="progresso">DESAFIO 4/7</div>
+        <h1>Pergunta Vital 🍦</h1>
+        <p>Qual o melhor acompanhamento para uma conversa boa?</p>
+        <button class="btn" onclick="proxima(4)">Um café ou um sorvete</button>
+        <button class="btn" onclick="proxima(4)">Uma risada sem fim</button>
+        <button class="btn" onclick="proxima(4)">Silêncio confortável</button>
+    </div>
+
+    <!-- FASE 5 -->
+    <div class="container hidden" id="fase5">
+        <div class="progresso">DESAFIO 5/7</div>
+        <h1>Quase lá... 🔥</h1>
+        <p>Você sabia que seu sorriso é um dos motivos desse quiz existir?</p>
+        <button class="btn" onclick="proxima(5)">Não sabia (mas amei)</button>
+        <button class="btn" onclick="proxima(5)">Imaginava! 😊</button>
+    </div>
+
+    <!-- FASE 6 -->
+    <div class="container hidden" id="fase6">
+        <div class="progresso">DESAFIO 6/7</div>
+        <h1>O Grande Teste 🏆</h1>
+        <p>Se eu te fizesse um convite agora, qual a probabilidade de você dizer "bora"?</p>
+        <button class="btn" onclick="proxima(6)">100% de chance</button>
+        <button class="btn" onclick="proxima(6)">A gente vê isso agora!</button>
+    </div>
+
+    <!-- FASE 7 (A FINAL) -->
+    <div class="container hidden" id="fase7">
+        <div class="progresso">DESAFIO 7/7</div>
+        <h1>Parabéns, Bianca! 🎉</h1>
+        <p>Você venceu o desafio! E como prometido, aqui está o seu prêmio:</p>
+        <p><strong>Que tal a gente sair para conversar e dar umas risadas hoje?</strong></p>
+        
+        <div style="position: relative; height: 120px; margin-top: 20px;">
+            <!-- LINK PARA SEU WHATSAPP -->
+            <a href="https://wa.me/5579991419309?text=Oi%20Ronnie!%20Ganhei%20o%20desafio%20e%20vim%20aceitar%20o%20convite.%20%F0%9F%A4%A9" class="btn">SIM, EU ACEITO! 💕</a>
+            <br>
+            <button class="btn" id="btnNao" onmouseover="fuja()" onclick="fuja()">Vou pensar...</button>
+        </div>
+    </div>
+
+    <script>
+        function proxima(atual) {
+            document.getElementById('fase' + atual).classList.add('hidden');
+            document.getElementById('fase' + (atual + 1)).classList.remove('hidden');
+        }
+
+        function fuja() {
+            let b = document.getElementById('btnNao');
+            b.style.position = 'fixed';
+            let x = Math.random() * (window.innerWidth - b.offsetWidth - 40) + 20;
+            let y = Math.random() * (window.innerHeight - b.offsetHeight - 40) + 20;
+            b.style.left = x + "px";
+            b.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
